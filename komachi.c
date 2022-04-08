@@ -17,7 +17,7 @@ int main(void) {
     char *process_string = calloc(LEN, sizeof(char));
     int *num_arr = malloc(sizeof(int) * LEN / 2);
     memset(num_arr, 0, sizeof(int) * LEN / 2);
-    process_string = "1 212 3 43 234 3 43 3 45 35  535 4  43 3 32  4434 4 2347 23  32 3233 2";
+    process_string = "1 212 3 43";
     int num = 0;
     int num_arr_order = 0;
     for (int i = 0; i < LEN; ++i) {
@@ -51,8 +51,15 @@ int main(void) {
     }
 
     printf("\n\n");
-    printf("%1.0f", pow(2,array_length));
+    printf("%d\n", (int) pow(2, array_length));
 
+    for (int i = 0; i < (int) pow(2, array_length); ++i) {
+        printf("%d\n", i);
+        for (int j = 0; j < array_length; ++j) {
+            printf("%d\t%d\n", (int) pow(2, j), (i % (int) pow(2, j)));
+        }
+        printf("\n");
+    }
 
 
 }
