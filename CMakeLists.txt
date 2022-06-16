@@ -14,3 +14,17 @@ add_executable(round_vanilla round_vanilla.c)
 add_executable(round_vanilla_limited round_vanilla_limited.c)
 add_executable(round_math round_math.c)
 target_link_libraries(round_math m)
+add_executable(sys_buf sys_buf.c)
+add_executable(sys_buf_char sys_buf_char.c)
+
+find_package(OpenMP REQUIRED)
+if(OpenMP_FOUND)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+endif()
+
+add_executable(rounding_error rounding_error.c)
+add_executable(info_loss info_loss.c)
+add_executable(digit_loss digit_loss.c)
+
+add_executable(file_io file_io.c)
