@@ -28,3 +28,7 @@ add_executable(info_loss info_loss.c)
 add_executable(digit_loss digit_loss.c)
 
 add_executable(file_io file_io.c)
+add_executable(rand rand.c)
+add_executable(rand_rand rand_rand.c)
+
+add_executable(normal_rand normal_rand.c)
