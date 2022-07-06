@@ -39,27 +39,23 @@ int main(int argc, char *argv[]) {
 
     gnuplot = popen(GNUPLOT_PATH, "w");
 
-    fprintf(gnuplot,"set grid\n");
-    fprintf(gnuplot,"set size square\n");
+    fprintf(gnuplot, "set grid\n");
+    fprintf(gnuplot, "set size square\n");
     fprintf(gnuplot, "plot [-4000:37000] [-4000:37000] '-' using 2:3 with lp pointtype 7 linecolor 'turquoise'\n");
     x = 0;
     y = 1;
     for (i = 0; i < NUM; i++) {
         //x = lcgs(x);
         //y = lcgs(y);
-        x=rand();
-        y=rand();
+        x = rand();
+        y = rand();
         fprintf(fp1, "%u\t%u\n", x, y);
-        //fprintf(gnuplot, "%d\t%u\t%u\n", i, x, y);
         fprintf(gnuplot, "%d\t%u\t%u\n", i, x, y);
 
     }
 
     fprintf(gnuplot, "e\n");
-    // fprintf(gnuplot, "set autoscale");
     pclose(gnuplot);
-    //system("pause");
-
 
     return 0;
 }
