@@ -57,15 +57,6 @@ int main(int argc, char *argv[]) {
             "'-' using 2:3 axis x1y1 with p pointtype 7 linecolor rgb 0x80FF0000 pointsize 0.08 title '乱数の分布(散布図)',"
             "'-' using 1:2 axis x1y2 with l linecolor 'blue' linewidth 4 title '乱数の分布(折れ線)'\n");
 
-    //乱数の平均値を取得
-    int g = 0;
-    for (int j = 0; j < 1e3; ++j) {
-        g += rand();
-    }
-    int average = g / 1e3;
-    printf("%d\t%ld\t%ld\n", g, average / 1e3, RAND_MAX);
-
-
     for (i = 0; i < NUM; i++) {
         x = 0;
         y = 0;
