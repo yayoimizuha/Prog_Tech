@@ -11,12 +11,17 @@
 #define A 9
 #define C 13
 #define M 4096
+#define N 3000
 
 #define GNUPLOT_PATH "C:\\Progra~1\\gnuplot\\bin\\gnuplot.exe -persist"
 
 unsigned int lcgs(unsigned int x) {
-    unsigned int y;
-    y = (A * x + C) % M;
+    if (M < N)exit(1);
+    unsigned int y = M;
+    while (y > N) {
+        y = (A * x + C) % M;
+        x = y;
+    }
     return y;
 }
 
@@ -42,14 +47,14 @@ int main(int argc, char *argv[]) {
     fprintf(gnuplot, "set terminal windows color\n");
     fprintf(gnuplot, "set grid\n");
     fprintf(gnuplot, "set size square\n");
-    fprintf(gnuplot, "plot [-4000:37000] [-4000:37000] '-' using 2:3 with lp pointtype 7 linecolor 'turquoise'\n");
+    fprintf(gnuplot, "plot [-200:3200] [-200:3200] '-' using 2:3 with lp pointtype 7 linecolor 'turquoise'\n");
     x = 0;
     y = 1;
     for (i = 0; i < NUM; i++) {
         x = lcgs(x);
         y = lcgs(y);
-        // x = rand();
-        // y = rand();
+        //x = rand();
+        //y = rand();
         fprintf(fp1, "%u\t%u\n", x, y);
         fprintf(gnuplot, "%d\t%u\t%u\n", i, x, y);
 

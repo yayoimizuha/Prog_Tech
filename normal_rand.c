@@ -20,10 +20,11 @@ int main(int argc, char *argv[]) {
     int i;
     int x, y;
 
-    int *hist_x = (int *) malloc(sizeof(int) * (RAND_MAX * RAND_AVE * 2 + 10));
+    int *hist_normal = (int *) malloc(sizeof(int) * (RAND_MAX * RAND_AVE * 2 + 10));
+    int *hist_uniform = (int *) malloc(sizeof(int) * (RAND_MAX * RAND_AVE * 2 + 10));
 
     for (int j = 0; j < RAND_MAX * 12 + 10; ++j) {
-        hist_x[j] = 0;
+        hist_normal[j] = 0;
     }
     // Usage
     if (argc != 2) {
@@ -72,7 +73,7 @@ int main(int argc, char *argv[]) {
         for (int j = 0; j < RAND_AVE * 2; j++) {
             x += rand();
         }
-        hist_x[x]++;
+        hist_normal[x]++;
         x -= RAND_MAX * RAND_AVE;
         for (int j = 0; j < RAND_AVE * 2; j++) {
             y += rand();
@@ -94,7 +95,7 @@ int main(int argc, char *argv[]) {
     int temp_x, temp_y;
     for (int j = 0; j < RAND_MAX * RAND_AVE * 2 + 10; ++j) {
         if (j % RAND_RANGE == 0)temp_x = temp_y = 0;
-        temp_x += hist_x[j];
+        temp_x += hist_normal[j];
         if (j % RAND_RANGE == RAND_RANGE - 1) {
             fprintf(gnuplot, "%d\t%ld\t%ld\n", j - RAND_MAX * RAND_AVE, temp_x, temp_y);
         }
